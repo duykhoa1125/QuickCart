@@ -18,7 +18,6 @@ const AddAddress = () => {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-
     }
 
     return (
