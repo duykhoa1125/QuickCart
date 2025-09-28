@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
     cartItems: { type: Object, default: {} },
   },
   {
+    _id: false, // Disable auto _id generation since we're providing our own
     minimize: false, //Nếu bạn đặt minimize: false — các object rỗng sẽ được giữ lại trong document.
     timestamps: true,
   }

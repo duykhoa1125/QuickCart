@@ -9,6 +9,7 @@ if (!cached) {
 
 async function connectDB() {
     if(cached.conn) {
+        console.log("Using cached MongoDB connection");
         return cached.conn;
     }
 
@@ -18,8 +19,13 @@ async function connectDB() {
           bufferCommands: false,
         };
 
+        console.log("Connecting to MongoDB...");
         cached.promise = mongoose.connect(`${process.env.MONGODB_URI}/quickcart`,opts).then((mongoose)=> {
+            console.log("MongoDB connected successfully");
             return mongoose;
+        }).catch((error) => {
+            console.error("MongoDB connection error:", error);
+            throw error;
         })
     }
     cached.conn = await cached.promise;
